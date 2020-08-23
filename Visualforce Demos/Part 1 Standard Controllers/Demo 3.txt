@@ -1,0 +1,42 @@
+<!-- TestPage - fully featured list controller -->
+<apex:page standardController="Account" recordSetVar="accounts" lightningStylesheets="true">
+    <apex:form >
+        <apex:pageBlock id="accountList" title="Accounts">
+            <apex:pageMessages />
+            <apex:pageBlockButtons >
+                <apex:commandButton value="|<" title="First" action="{!first}" disabled="{!NOT(HasPrevious)}" />
+                <apex:commandButton value="<" title="Previous" action="{!previous}" disabled="{!NOT(HasPrevious)}" />
+                <apex:commandButton value=">" title="Next" action="{!next}" disabled="{!NOT(HasNext)}" />
+                <apex:commandButton value=">|" title="Last" action="{!last}" disabled="{!NOT(HasNext)}" />
+                <apex:outputText >
+                      {!(pageNumber * pageSize) + 1 - pageSize}
+                      through 
+                      {!IF((pageNumber * pageSize) > resultSize, resultSize,(pageNumber * pageSize))} 
+                      of {!resultSize} records
+                </apex:outputText>
+            </apex:pageBlockButtons>
+            <apex:panelGrid columns="4" >
+                Filter by: 
+                <apex:selectList value="{!filterId}" size="1">
+                    <apex:selectOptions value="{!listViewOptions}"/>
+                    <apex:actionSupport event="onchange" reRender="accountList" status="notifyUser" />
+                </apex:selectList>
+                <apex:actionStatus id="notifyUser" startText="Working..." stopText=" "></apex:actionStatus>
+            </apex:panelGrid>
+            <apex:pageBlockTable var="acct" value="{!accounts}" >
+                <apex:column value="{!acct.Name}"/>
+                <apex:column value="{!acct.Phone}"/>
+                <apex:column value="{!acct.Industry}"/>
+                <apex:column value="{!acct.Website}"/>
+                <apex:column value="{!acct.Support_Level__c}"/>
+            </apex:pageBlockTable>
+            <br/>Select Page Size: 
+            <apex:selectList value="{!PageSize}" size="1">
+                <apex:selectOption itemValue="5" itemLabel="5"/>
+                <apex:selectOption itemValue="20" itemLabel="20"/>
+                <apex:selectOption itemValue="100" itemLabel="100"/>
+                <apex:actionSupport event="onchange" reRender="accountList"/>
+            </apex:selectList>            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

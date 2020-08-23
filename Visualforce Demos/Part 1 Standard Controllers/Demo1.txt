@@ -1,0 +1,33 @@
+<!-- TestPage - using coarse grained tags. Needs a valid account record Id in the URL -->
+<apex:page standardController="Account" lightningStylesheets="true">
+
+    <b>Hello {!$User.FirstName}</b>
+
+    <apex:tabPanel >
+        <apex:tab label="Details">
+            <apex:detail />
+        </apex:tab>
+        <apex:tab label="Related Lists">
+            <apex:relatedList list="Contacts"/>
+            <apex:relatedList list="CombinedAttachments"/>
+        </apex:tab>    
+    </apex:tabPanel>
+    
+</apex:page>
+
+<!-- TestPage - using fine grained tags. Needs a valid account record Id in the URL -->
+<apex:page standardController="Account" lightningStylesheets="true">
+
+    <apex:form >
+        <apex:pageBlock title="Account Status">
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Save Account Record" action="{!quicksave}" />
+            </apex:pageBlockButtons>                
+            <apex:pageBlockSection >
+                <apex:inputField value="{!Account.Name}"/>
+                <apex:inputField value="{!Account.Status__c}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+
+</apex:page>

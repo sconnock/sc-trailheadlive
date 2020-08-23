@@ -1,0 +1,37 @@
+<!-- Getter Method and Properties -->
+
+<!-- TestPage - needs a valid Account record Id in the URL -->
+<apex:page standardController="Account" extensions="MyControllerExtension1_CX">
+    {!greeting}<br/>
+    <apex:form >
+        <apex:inputText value="{!Account.Name}" size="30"/><br/>
+        <apex:commandButton action="{!quicksave}" value="Save"/>
+    </apex:form>
+</apex:page>
+
+public with sharing class MyControllerExtension1_CX {
+    private Account acct;
+    private String greeting;
+
+    public MyControllerExtension1_CX(ApexPages.StandardController stdController) {
+        acct = (Account)stdController.getRecord();
+    }
+
+    public String getGreeting() {
+        return 'Hello ' + acct.name + ' (' + acct.id + ')';
+    }
+}
+
+public with sharing class myControllerExtension2_CX {
+    private Account acct;
+	
+    public myControllerExtension2_CX(ApexPages.StandardController stdController) {
+        acct = (Account)stdController.getRecord();
+    }
+	
+    public String greeting {
+        get {
+           return 'Hello ' + acct.name + ' (' + acct.id + ')';
+        }
+    }
+}

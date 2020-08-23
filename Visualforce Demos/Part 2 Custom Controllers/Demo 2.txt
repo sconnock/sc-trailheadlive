@@ -1,0 +1,16 @@
+<!-- TestPage - Custom Controllers. Needs a valid Account record Id in the URL -->
+<apex:page controller="MyCustomController1_CC">
+    This page is using the {!name} controller!<br/>
+    Account Id: {!Account.Id}, Name: {!Account.Name}
+</apex:page>
+
+public with sharing class MyCustomController1_CC {
+    public String getName() {
+        return 'MyCustomController1';
+    }
+    
+    public Account getAccount() {
+        return [SELECT Id, Name from Account
+                WHERE Id = :ApexPages.currentPage().getParameters().get('Id')];
+    }
+}
