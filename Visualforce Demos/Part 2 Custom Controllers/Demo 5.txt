@@ -1,23 +1,42 @@
-<!-- TestPage - Transient Variables Example -->
-<apex:page controller="MyCustomController4_CC">
-    T1: {!t1} <br/>
-    T2: {!t2} <br/>
+<!-- TestPage - Instantiating the StandardSetController class -->
+<apex:page controller="MyCustomController4_CC" tabStyle="Contact" lightningStylesheets="true">
     <apex:form >
-        <apex:commandLink value="refresh"/>
+        <apex:pageBlock id="contactList" title="Search Contacts">
+            <apex:panelGrid cellspacing="4" columns="6" style="line-height:2.2em" >
+                <apex:commandButton status="notifyUser" reRender="contactList" value="|<" title="First" action="{!setCon.first}" disabled="{!NOT(setCon.hasPrevious)}" styleClass="btn" />
+                <apex:commandButton status="notifyUser" reRender="contactList" value="<" title="Previous" action="{!setCon.previous}" disabled="{!NOT(setCon.hasPrevious)}" styleClass="btn" />
+                <apex:commandButton status="notifyUser" reRender="contactList" value=">" title="Next" action="{!setCon.next}" disabled="{!NOT(setCon.hasNext)}" styleClass="btn" />
+                <apex:commandButton status="notifyUser" reRender="contactList" value=">|" title="Last" action="{!setCon.last}" disabled="{!NOT(setCon.hasNext)}" styleClass="btn" />
+                <apex:actionStatus id="notifyUser" startText="Searching..." stopText=" "></apex:actionStatus>
+            </apex:panelGrid>
+            <apex:pageMessages />
+            <apex:pageBlockTable var="con" value="{!contacts}" >
+                <apex:column headerValue="Name">
+                  <apex:outputLink value="/{!con.id}">{!con.Name}</apex:outputLink>
+                </apex:column>
+                <apex:column value="{!con.Account.Name}"/>
+                <apex:column value="{!con.Phone}"/>
+                <apex:column value="{!con.Email}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
     </apex:form>
 </apex:page>
 
 public with sharing class MyCustomController4_CC {
-    DateTime t1;
-    transient DateTime t2;
-    
-    public String getT1() {
-        if (t1 == null) t1 = System.now();
-        return '' + t1;
+
+    public ApexPages.StandardSetController setCon { 
+        get {
+            if (setCon == null ) {
+                setCon = new ApexPages.StandardSetController([SELECT Id, Name, Email, Phone, Account.Name FROM Contact ORDER BY Name]);
+                setCon.setPageSize(10);            
+            }
+            return setCon;
+        }
+        set;     
     }
-    
-    public String getT2() {
-        if (t2 == null) t2 = System.now();
-        return '' + t2;
-    }    
+
+    // List of Contacts displayed on the page
+    public List<Contact> getContacts() {
+        return setCon.getRecords();
+    }
 }
