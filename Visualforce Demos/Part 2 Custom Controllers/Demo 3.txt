@@ -1,35 +1,47 @@
-<!-- TestPage - Working with URL Parameters. Optionally uses an Account record Id on the URL -->
+<!-- TestPage - Custom Controllers. Needs a valid Account record Id in the URL -->
 <apex:page controller="MyCustomController2_CC">
-    Controller name: {!Name}
+    This page is using the <b>{!name}</b> controller!<br/><br/>
+       
+    Account Id: {!Account.Id}, Name: {!Account.Name}<br/><br/>
     <apex:form >
-        <apex:inputField value="{!Account.Name}"/>
-        <apex:commandButton action="{!Save}" value="Update" rendered="{!NOT($CurrentPage.parameters.Id == null)}"/>  
-        <apex:commandButton action="{!Save}" value="Create" rendered="{!($CurrentPage.parameters.Id == null)}"/>  
-    </apex:form>
+        <apex:pageBlock >
+            <apex:pageBlockSection columns="3">
+                <apex:inputText value="{!Name}" label="Name"/>
+                <apex:inputText value="{!Test}" label="Test"/>
+                <apex:commandButton value="Refresh" action="{!Refresh}"/>              
+            </apex:pageBlockSection>     
+        </apex:pageBlock>
+    </apex:form>          
+
+    <apex:outputPanel rendered="{!Test != null}">
+        <p>The value of the string Test is {!Test}</p>
+    </apex:outputPanel>
+
 </apex:page>
 
-public class MyCustomController2_CC {
-    private Account account;
+public with sharing class MyCustomController2_CC {
 
-    // If the ID of an account record is found - return that account.
-    // Otherwise create a new account
-    public Account getAccount() {
-        ID accId = ApexPages.currentPage().getParameters().get('Id');
-        if ( accId != null )
-            account = [SELECT Id, Name FROM Account WHERE Id = :accId];
-        else if ( account == null ) 
-            account = new Account();
-        return account;
-    }
-
+    private String controllerName;
+     
     public String getName() {
-        return 'MyThirdController';
+        if ( controllerName == null ) {
+            controllerName = 'MySecondController';
+        }
+        return controllerName;
     }
-
-    public PageReference save() {
-        upsert account;
-        //PageReference acctPage = new PageReference('/' + account.id);
-        PageReference acctPage = new apexPages.standardController(account).view();
-        return acctPage;
+    
+    public void setName(String s) {
+        controllerName = s;
+    }
+    
+    public string test { get; set; }
+    
+    public Account getAccount() {
+        return [SELECT Id, Name from Account
+                WHERE Id = :ApexPages.currentPage().getParameters().get('Id')];
+    }
+    
+    public pagereference refresh(){
+        return null;
     }
 }
