@@ -5,6 +5,7 @@
 </apex:page>
 
 public with sharing class MyCustomController1_CC {
+
     public String getName() {
         return 'MyCustomController1';
     }
@@ -14,3 +15,4 @@ public with sharing class MyCustomController1_CC {
                 WHERE Id = :ApexPages.currentPage().getParameters().get('Id')];
     }
 }
+
