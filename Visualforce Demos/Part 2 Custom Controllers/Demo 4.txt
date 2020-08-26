@@ -1,42 +1,35 @@
-<!-- TestPage - Instantiating the StandardSetController class -->
-<apex:page controller="MyCustomController3_CC" tabStyle="Contact" lightningStylesheets="true">
+<!-- TestPage - Working with URL Parameters. Optionally uses an Account record Id on the URL -->
+<apex:page controller="MyCustomController3_CC">
+    Controller name: {!Name}
     <apex:form >
-        <apex:pageBlock id="contactList" title="Search Contacts">
-            <apex:panelGrid cellspacing="4" columns="6" style="line-height:2.2em" >
-                <apex:commandButton status="notifyUser" reRender="contactList" value="|<" title="First" action="{!setCon.first}" disabled="{!NOT(setCon.hasPrevious)}" styleClass="btn" />
-                <apex:commandButton status="notifyUser" reRender="contactList" value="<" title="Previous" action="{!setCon.previous}" disabled="{!NOT(setCon.hasPrevious)}" styleClass="btn" />
-                <apex:commandButton status="notifyUser" reRender="contactList" value=">" title="Next" action="{!setCon.next}" disabled="{!NOT(setCon.hasNext)}" styleClass="btn" />
-                <apex:commandButton status="notifyUser" reRender="contactList" value=">|" title="Last" action="{!setCon.last}" disabled="{!NOT(setCon.hasNext)}" styleClass="btn" />
-                <apex:actionStatus id="notifyUser" startText="Searching..." stopText=" "></apex:actionStatus>
-            </apex:panelGrid>
-            <apex:pageMessages />
-            <apex:pageBlockTable var="con" value="{!contacts}" >
-                <apex:column headerValue="Name">
-                  <apex:outputLink value="/{!con.id}">{!con.Name}</apex:outputLink>
-                </apex:column>
-                <apex:column value="{!con.Account.Name}"/>
-                <apex:column value="{!con.Phone}"/>
-                <apex:column value="{!con.Email}"/>
-            </apex:pageBlockTable>
-        </apex:pageBlock>
+        <apex:inputField value="{!Account.Name}"/>
+        <apex:commandButton action="{!Save}" value="Update" rendered="{!NOT($CurrentPage.parameters.Id == null)}"/>  
+        <apex:commandButton action="{!Save}" value="Create" rendered="{!($CurrentPage.parameters.Id == null)}"/>  
     </apex:form>
 </apex:page>
 
-public with sharing class MyCustomController3_CC {
+public class MyCustomController3_CC {
+    private Account account;
 
-    public ApexPages.StandardSetController setCon { 
-        get {
-            if (setCon == null ) {
-                setCon = new ApexPages.StandardSetController([SELECT Id, Name, Email, Phone, Account.Name FROM Contact ORDER BY Name]);
-                setCon.setPageSize(10);            
-            }
-            return setCon;
-        }
-        set;     
+    // If the ID of an account record is found - return that account.
+    // Otherwise create a new account
+    public Account getAccount() {
+        ID accId = ApexPages.currentPage().getParameters().get('Id');
+        if ( accId != null )
+            account = [SELECT Id, Name FROM Account WHERE Id = :accId];
+        else if ( account == null ) 
+            account = new Account();
+        return account;
     }
 
-    // List of Contacts displayed on the page
-    public List<Contact> getContacts() {
-        return setCon.getRecords();
+    public String getName() {
+        return 'MyThirdController';
+    }
+
+    public PageReference save() {
+        upsert account;
+        //PageReference acctPage = new PageReference('/' + account.id);
+        PageReference acctPage = new apexPages.standardController(account).view();
+        return acctPage;
     }
 }
