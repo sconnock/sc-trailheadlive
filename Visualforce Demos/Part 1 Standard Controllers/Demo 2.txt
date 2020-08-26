@@ -1,5 +1,5 @@
 <!-- TestPage - basic list controller -->
-<apex:page standardController="Account" recordSetVar="accounts“ lightningStylesheets="true">
+<apex:page standardController="Account" recordSetVar="accounts" lightningStylesheets="true">
     <apex:pageBlock >
         <apex:pageBlockTable value="{!accounts}" var="acc">
             <apex:column value="{!acc.name}"/>
