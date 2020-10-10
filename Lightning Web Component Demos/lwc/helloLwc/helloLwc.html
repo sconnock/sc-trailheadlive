@@ -1,0 +1,14 @@
+<template>
+
+	<lightning-card title="LWC_Hello" icon-name="action:announcement">
+
+	   <lightning-button label="Count" onclick={count} slot="actions"></lightning-button>
+
+	   <div class="slds-m-around_medium">
+		  <p>Hello, {greeting}!</p>
+		  <lightning-input label="Name" value={greeting} onchange={handleChange}></lightning-input>
+	   </div>
+
+	</lightning-card>
+
+ </template>

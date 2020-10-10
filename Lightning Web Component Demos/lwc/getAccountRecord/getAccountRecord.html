@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="Get an Account Record using LDS" icon-name="standard:account">
+
+        <div class="slds-m-around_medium">
+            <lightning-input label="Account ID" value={recordId} onchange={handleChange}></lightning-input>
+        </div>
+
+        <template if:true={account.data}>
+            <div class="slds-m-around_medium">
+                <p>{account.data.fields.Name.value}</p>
+            </div>
+        </template>
+
+        <template if:true={account.error}>
+            <div class="slds-m-around_medium">
+                <p style="color: red">{account.error.body.message}</p>
+            </div>
+        </template>
+
+    </lightning-card>
+</template>

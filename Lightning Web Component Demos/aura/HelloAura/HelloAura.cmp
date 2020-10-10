@@ -1,0 +1,18 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    
+	<aura:attribute name="greeting" type="String" default="World" />
+
+	<lightning:card title="Aura_Hello" iconName="action:announcement">
+
+		<aura:set attribute="actions">
+			<lightning:button label="Count" onclick="{!c.count}" />
+		</aura:set>
+
+		<div class="slds-m-around_medium">
+			<p>Hello, {!v.greeting}!</p>
+			<lightning:input label="Name" value="{!v.greeting}" />
+		</div>
+
+	</lightning:card>
+	
+</aura:component>
