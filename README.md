@@ -35,4 +35,4 @@ Preparing for your Platform Developer I Certification - Lightning Components
 <br/>Scheduled 4th November 2020 @3pm GMT
 
 Trail Together - Asynchronous Apex
-https://trailhead.salesforce.com/live/videos/a2r3k000001n2G6/trail-together---asynchronous-apex
+<br/>https://trailhead.salesforce.com/live/videos/a2r3k000001n2G6/trail-together---asynchronous-apex
