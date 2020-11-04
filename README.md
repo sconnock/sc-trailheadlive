@@ -31,11 +31,11 @@ https://trailhead.salesforce.com/live/videos/a2r3k000001n203/preparing-for-your-
 8. Preparing for your Platform Developer I Certification - Working with DML
 https://trailhead.salesforce.com/live/videos/a2r3k000001n27E/preparing-for-your-platform-developer-i-certification---working-with-dml
 
-9. Preparing for your Platform Developer I Certification - Lightning Components
-<br/>Scheduled 4th November 2020 @3pm GMT
-
-10. Trail Together - Asynchronous Apex
+9. Trail Together - Asynchronous Apex
 <br/>https://trailhead.salesforce.com/live/videos/a2r3k000001n2G6/trail-together---asynchronous-apex
+
+10. Preparing for your Platform Developer I Certification - Lightning Components
+<br/>Scheduled 4th November 2020 @3pm GMT
 
 11. Preparing for your Platform Developer I Certification - Deploying your Code
 <br/>To Be Scheduled
