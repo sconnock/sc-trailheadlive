@@ -40,5 +40,5 @@ https://trailhead.salesforce.com/live/videos/a2r3k000001n27E/preparing-for-your-
 12. Using Upsert with External ID in Salesforce
 <br/>Scheduled 26th January 2021 @2.00pm GMT
 
-11. Preparing for your Platform Developer I Certification - Deploying your Code
+11. Preparing for your Platform Developer I Certification - Deployment - Environments and Tools
 <br/>To Be Scheduled
