@@ -37,5 +37,8 @@ https://trailhead.salesforce.com/live/videos/a2r3k000001n27E/preparing-for-your-
 10. Preparing for your Platform Developer I Certification - Lightning Components
 <br/>https://trailhead.salesforce.com/live/videos/a2r3k000001n2LQ/preparing-for-your-platform-developer-i-certification---lightning-components
 
+12. Using Upsert with External ID in Salesforce
+<br/>Scheduled 26th January 2021 @2.00pm GMT
+
 11. Preparing for your Platform Developer I Certification - Deploying your Code
 <br/>To Be Scheduled
