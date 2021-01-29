@@ -29,7 +29,7 @@ https://trailhead.salesforce.com/live/videos/a2r3k000001n1zy/preparing-for-your-
 https://trailhead.salesforce.com/live/videos/a2r3k000001n203/preparing-for-your-platform-developer-i-certification---visualforce-part-2---custom-controllers
 
 8. Preparing for your Platform Developer I Certification - Working with DML
-https://trailhead.salesforce.com/live/videos/a2r3k000001n27E/preparing-for-your-platform-developer-i-certification---working-with-dml
+https://trailhead.salesforce.com/live/videos/a2r3k000001n2Kh/preparing-for-your-platform-developer-i-cert---working-with-dml/
 
 9. Trail Together - Asynchronous Apex
 <br/>https://trailhead.salesforce.com/live/videos/a2r3k000001n2G6/trail-together---asynchronous-apex
