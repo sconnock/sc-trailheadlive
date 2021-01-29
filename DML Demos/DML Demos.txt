@@ -1,0 +1,73 @@
+////////////////////////////////////////////////////////////////////////////////
+// INSERT                                                                     //
+////////////////////////////////////////////////////////////////////////////////
+
+// Create a list of contacts in memory
+List<Contact> contacts = new List<Contact>();
+Contact turing = new Contact(FirstName='Alan', LastName='Turing');
+Contact babbage = new Contact(FirstName='Charles', LastName='Babbage');
+contacts.add(turing);
+contacts.add(babbage);
+
+insert contacts; // Insert the list
+ 
+System.debug('Alan Turing\'s Id is ' + turing.Id);
+System.debug('Charles Babbage\'s Id is ' + babbage.Id);
+
+////////////////////////////////////////////////////////////////////////////////
+// UPDATE                                                                     //
+////////////////////////////////////////////////////////////////////////////////
+List<Contact> contacts = [SELECT Id, LastName FROM Contact 
+                          WHERE LastName IN ('Turing', 'Babbage')];
+
+for (Contact c : contacts) {
+    if (c.LastName == 'Turing')
+       c.External_Contact_Id__c = 'AT';
+    else
+       c.External_Contact_Id__c = 'CB';
+}
+
+update contacts;
+
+////////////////////////////////////////////////////////////////////////////////
+// UPSERT using external Id                                                   //
+////////////////////////////////////////////////////////////////////////////////
+List<Contact> contacts = new List<Contact>();
+
+// Update these two contact records without first querying to get Salesforce ID
+contacts.add(new Contact(FirstName='Al', External_Contact_Id__c='AT'));
+contacts.add(new Contact(FirstName='Chuck', External_Contact_Id__c='CB'));
+
+upsert contacts External_Contact_Id__c;
+
+////////////////////////////////////////////////////////////////////////////////
+// UPSERT using static method with external Id                                //
+////////////////////////////////////////////////////////////////////////////////
+List<Contact> contacts = new List<Contact>();
+contacts.add(new Contact(FirstName='Alan', External_Contact_Id__c='AT'));
+contacts.add(new Contact(FirstName='Charles', External_Contact_Id__c='CB'));
+
+Schema.SObjectField externalIdField = Contact.Fields.External_Contact_Id__c;
+
+Boolean allOrNone = false;
+
+Database.upsert(contacts, externalIdField, allOrNone);
+
+////////////////////////////////////////////////////////////////////////////////
+// DELETE                                                                     //
+////////////////////////////////////////////////////////////////////////////////
+// Query then delete some records
+List<Contact> contacts = [SELECT Id FROM Contact 
+                          WHERE LastName IN ('Turing', 'Babbage')];
+delete contacts;
+    
+////////////////////////////////////////////////////////////////////////////////
+// UNDELETE                                                                   //
+////////////////////////////////////////////////////////////////////////////////
+// Query recycle bin and restore deleted records
+List<Contact> contactsToRestore = [SELECT Id FROM Contact 
+                                   WHERE LastName IN ('Turing', 'Babbage') 
+								   AND IsDeleted = true ALL ROWS];
+undelete contactsToRestore; 
+// or Database.undelete(contactsToRestore, false);
+
