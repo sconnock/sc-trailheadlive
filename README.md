@@ -41,4 +41,4 @@ https://trailhead.salesforce.com/live/videos/a2r3k000001n2Kh/preparing-for-your-
 <br/>https://trailhead.salesforce.com/live/videos/a2r3k000001n2dP/using-upsert-with-external-id-in-salesforce
 
 11. Preparing for your Platform Developer I Certification - Deployment: Environments and Tools
-<br/>Scheduled 2nd February 2021 @2.00pm GMT
+<br/>https://trailhead.salesforce.com/live/videos/a2r3k000001n2jD/preparing-for-your-platform-developer-i-certification--deployment-environments-and-tools
