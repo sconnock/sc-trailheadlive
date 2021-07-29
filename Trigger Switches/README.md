@@ -89,4 +89,4 @@ Run multiple tests using Custom Settings/Custom Metadata Type.
 
 ## 8.   Add the Set Rating flow to the org and test using flow debugger
 
-Flow is initially setup to using Custom Setting in the Get Record step. Pssible to replace wih the CheckTriggerSwitch Apex action which uses Apex to retrieve the Custom Setting.
+Flow is initially setup to using Custom Setting in the Get Record step. Possible to replace wih the CheckTriggerSwitch Apex action which uses Apex to retrieve the Custom Setting.
