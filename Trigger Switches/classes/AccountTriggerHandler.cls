@@ -6,8 +6,7 @@ public class AccountTriggerHandler {
 
     // Custom Setting Hierarchy
     //public static TriggerSwitchAccount__c tsw = TriggerSwitchAccount__c.getOrgDefaults();
-    //public static TriggerSwitchAccount__c tsw = TriggerSwitchAccount__c.getInstance('00e4L000001OoAPQA0'); // Admin Profile ID
-    //public static TriggerSwitchAccount__c tsw = [SELECT Active_Flag__c FROM TriggerSwitchAccount__c WHERE SetupOwnerId='00D4L000000rOEPUA2']; // Org Id
+    //public static TriggerSwitchAccount__c tsw = TriggerSwitchAccount__c.getInstance();
 
     // Custom Metadata Type
     //public static Trigger_Switch__mdt tsw = Trigger_Switch__mdt.getInstance('Account');    
