@@ -44,4 +44,4 @@ https://trailhead.salesforce.com/live/videos/a2r3k000001n2Kh/preparing-for-your-
 <br/>https://trailhead.salesforce.com/live/videos/a2r3k000001n2jD/preparing-for-your-platform-developer-i-certification--deployment-environments-and-tools
 
 13. Triggers - Sometimes you need to turn them off!
-https://trailhead.salesforce.com/live/videos/a2r3k000001vDVP/apex-triggers--sometimes-you-need-to-turn-them-off
+<br/>https://trailhead.salesforce.com/live/videos/a2r3k000001vDVP/apex-triggers--sometimes-you-need-to-turn-them-off
