@@ -37,8 +37,11 @@ https://trailhead.salesforce.com/live/videos/a2r3k000001n2Kh/preparing-for-your-
 10. Preparing for your Platform Developer I Certification - Lightning Components
 <br/>https://trailhead.salesforce.com/live/videos/a2r3k000001n2LQ/preparing-for-your-platform-developer-i-certification---lightning-components
 
-12. Using Upsert with External ID in Salesforce
+11. Using Upsert with External ID in Salesforce
 <br/>https://trailhead.salesforce.com/live/videos/a2r3k000001n2dP/using-upsert-with-external-id-in-salesforce
 
-11. Preparing for your Platform Developer I Certification - Deployment: Environments and Tools
+12. Preparing for your Platform Developer I Certification - Deployment: Environments and Tools
 <br/>https://trailhead.salesforce.com/live/videos/a2r3k000001n2jD/preparing-for-your-platform-developer-i-certification--deployment-environments-and-tools
+
+13. Triggers - Sometimes you need to turn them off!
+https://trailhead.salesforce.com/live/videos/a2r3k000001vDVP/apex-triggers--sometimes-you-need-to-turn-them-off
